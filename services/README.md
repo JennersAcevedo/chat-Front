@@ -26,11 +26,11 @@ try {
 
 ### Configuration
 
-The service uses the `NEXT_PUBLIC_API_BASE` environment variable to determine the backend base URL. By default it uses `http://localhost:3001`.
+The service uses the `NEXT_PUBLIC_API_BASE` environment variable to determine the backend base URL. By default it uses `http://localhost:3000`.
 
 #### Configure API URL
 
 1. **Create `.env.local` file** in the project root:
 ```bash
-NEXT_PUBLIC_API_BASE=http://localhost:3001
+NEXT_PUBLIC_API_BASE=http://localhost:3000
 ```
