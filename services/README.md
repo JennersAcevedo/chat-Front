@@ -1,36 +1,36 @@
-# Servicios de API
+# API Services
 
-Este directorio contiene los servicios para la comunicación con el backend.
+This directory contains services for backend communication.
 
 ## ChatApiService
 
-Servicio principal para manejar las llamadas a la API del chat.
+Main service to handle chat API calls.
 
-### Uso básico
+### Basic usage
 
 ```typescript
 import { chatApiService } from '../services';
 
-// Enviar un mensaje
+// Send a message
 try {
-  const response = await chatApiService.sendMessage('Hola, ¿cómo estás?');
+  const response = await chatApiService.sendMessage('Hello, how are you?');
   console.log(response.reply);
 } catch (error) {
   console.error('Error:', error.message);
 }
 ```
 
-### Métodos disponibles
+### Available methods
 
-- `sendMessage(message: string)`: Envía un mensaje al chat
+- `sendMessage(message: string)`: Sends a message to chat
 
-### Configuración
+### Configuration
 
-El servicio utiliza la variable de entorno `NEXT_PUBLIC_API_BASE` para determinar la URL base del backend. Por defecto usa `http://localhost:3001`.
+The service uses the `NEXT_PUBLIC_API_BASE` environment variable to determine the backend base URL. By default it uses `http://localhost:3001`.
 
-#### Configurar la URL de la API
+#### Configure API URL
 
-1. **Crear archivo `.env.local`** en la raíz del proyecto:
+1. **Create `.env.local` file** in project root:
 ```bash
 NEXT_PUBLIC_API_BASE=http://localhost:3001
 ```

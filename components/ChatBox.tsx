@@ -15,7 +15,7 @@ interface MessageItem {
   text: string;
 }
 
-// ----> Componente ChatBox
+// ----> ChatBox Component
 export default function ChatBox() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<MessageItem[]>([]);
@@ -25,14 +25,14 @@ export default function ChatBox() {
   const listRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Auto-scroll al último mensaje
+  // Auto-scroll to last message
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [messages, loading]);
 
-  // Enfocar el input al montar y después de enviar
+  // Focus input on mount and after sending
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -61,12 +61,12 @@ export default function ChatBox() {
         setError(error.message);
       } else {
         console.error('Unexpected error:', error);
-        setError('Error inesperado. Por favor, intenta de nuevo.');
+        setError('Unexpected error. Please try again.');
       }
     } finally {
       setLoading(false);
       setInput('');
-      // Re-enfocar el input
+      // Re-focus the input
       inputRef.current?.focus();
     }
   };

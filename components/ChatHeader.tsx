@@ -5,7 +5,7 @@ interface ChatHeaderProps {
   subtitle?: string;
 }
 
-// ----> Componente ChatHeader
+// ----> ChatHeader Component
 export default function ChatHeader({ 
   title = 'Tiny Chat', 
 

@@ -6,7 +6,7 @@ interface MessageBubbleProps {
   isTyping?: boolean;
 }
 
-// ----> Componente MessageBubble
+// ----> MessageBubble Component
 export default function MessageBubble({ message, role, isTyping = false }: MessageBubbleProps) {
   const isUser = role === 'user';
   

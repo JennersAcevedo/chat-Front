@@ -1,7 +1,7 @@
 import { ChatBox } from '../components';
 import styles from '../styles/home.module.css';
 
-// ----> Página Principal
+// ----> Main Page
 export default function Home() {
   return (
     <div className={styles.page}>

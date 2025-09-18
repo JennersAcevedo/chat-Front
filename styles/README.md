@@ -1,18 +1,18 @@
-# Estilos CSS Modules
+# CSS Modules Styles
 
-Este directorio contiene todos los archivos de estilos CSS modulares para los componentes de la aplicación.
+This directory contains all modular CSS style files for the application components.
 
-## Estructura
+## Structure
 
 ```
 styles/
-├── ChatBox.module.css        # Estilos del componente principal
-├── ChatHeader.module.css     # Estilos del encabezado
-├── MessageBubble.module.css  # Estilos de las burbujas de mensaje
-├── MessageList.module.css    # Estilos de la lista de mensajes
-├── MessageInput.module.css   # Estilos del input y botón
-├── ErrorMessage.module.css   # Estilos de los mensajes de error
-├── Footer.module.css         # Estilos del footer
-├── home.module.css          # Estilos de la página principal
-└── README.md                # Este archivo
+├── ChatBox.module.css        # Main component styles
+├── ChatHeader.module.css     # Header styles
+├── MessageBubble.module.css  # Message bubble styles
+├── MessageList.module.css    # Message list styles
+├── MessageInput.module.css   # Input and button styles
+├── ErrorMessage.module.css   # Error message styles
+├── Footer.module.css         # Footer styles
+├── home.module.css          # Main page styles
+└── README.md                # This file
 ```

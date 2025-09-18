@@ -5,7 +5,7 @@ interface ErrorMessageProps {
   onClose?: () => void;
 }
 
-// ----> Componente ErrorMessage
+// ----> ErrorMessage Component
 export default function ErrorMessage({ message, onClose }: ErrorMessageProps) {
   return (
     <div role="alert" className={styles.error}>
@@ -14,8 +14,8 @@ export default function ErrorMessage({ message, onClose }: ErrorMessageProps) {
         <button
           onClick={onClose}
           className={styles.closeButton}
-          aria-label="Cerrar mensaje de error"
-          title="Cerrar"
+          aria-label="Close error message"
+          title="Close"
         >
           <svg
             width="16"

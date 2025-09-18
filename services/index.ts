@@ -1,4 +1,4 @@
-// Exportar el servicio de API y sus tipos
+// Export API service and its types
 export { 
   chatApiService, 
   sendChatMessage,

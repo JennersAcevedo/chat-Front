@@ -9,7 +9,7 @@ interface MessageInputProps {
   placeholder?: string;
 }
 
-// ----> Componente MessageInput
+// ----> MessageInput Component
 const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
   ({ value, onChange, onSend, disabled, placeholder = 'Type your message' }, ref) => {
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -39,7 +39,7 @@ const MessageInput = forwardRef<HTMLInputElement, MessageInputProps>(
             aria-label="Send message"
             title="Send"
           >
-            {/* Icono de enviar */}
+            {/* Send icon */}
             <svg
               width="22"
               height="22"

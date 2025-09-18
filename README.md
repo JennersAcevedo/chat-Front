@@ -1,6 +1,6 @@
 ## Description
 
-This is the Live-Coding Assignment, which consists of building a tiny chat where a “bot” replies to all messages.
+This is the Live-Coding Assignment, which consists of building a tiny chat where a "bot" replies to all messages.
 
 ## Project setup
 
@@ -20,6 +20,6 @@ npm run dev
 # build for production
 npm run build
 
-#run on production
+# run on production
 npm run start
 ```
