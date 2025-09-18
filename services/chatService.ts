@@ -1,4 +1,4 @@
-// ---> Tipos para tipado estricto de la API 
+// ---> Types for strict API typing
 export interface ChatRequest {
   message: string;
 }
@@ -7,7 +7,7 @@ export interface ChatResponse {
   reply: string;
 }
 
-// ---> Clase de Error personalizada para errores de API 
+// ---> Custom Error class for API errors
 export class ApiError extends Error {
   public status: number;
 
@@ -18,9 +18,9 @@ export class ApiError extends Error {
   }
 }
 
-// --->  Configuración de la API 
-// Cambia esta URL por la de tu API externa
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:3001';
+// ---> API Configuration
+// Change this URL to your external API
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:3000';
 
 function joinUrl(base: string, path: string): string {
   const b = base.replace(/\/+$/, '');
@@ -28,7 +28,7 @@ function joinUrl(base: string, path: string): string {
   return `${b}/${p}`;
 }
 
-// --->  Clase del Servicio de API 
+// ---> API Service Class
 export class ChatApiService {
   private baseUrl: string;
 
@@ -37,10 +37,10 @@ export class ChatApiService {
   }
 
   /**
-   * Envía un mensaje al chat y obtiene la respuesta
-   * @param message - El mensaje del usuario
-   * @returns Promise con la respuesta del bot
-   * @throws ApiError si hay un error en la petición
+   * Sends a message to the chat and gets the response
+   * @param message - The user's message
+   * @returns Promise with the bot's response
+   * @throws ApiError if there's an error in the request
    */
   async sendMessage(message: string): Promise<ChatResponse> {
     if (!message.trim()) {
@@ -59,12 +59,12 @@ export class ChatApiService {
       });
 
       if (!response.ok) {
-        // Intentar obtener el mensaje de error del cuerpo de la respuesta
+        // Try to get the error message from the response body
         let errorMessage = this.getErrorMessage(response.status);
         
         try {
           const errorData = await response.json();
-          // Si la API retorna un mensaje de error específico, usarlo
+          // If the API returns a specific error message, use it
           if (errorData.message) {
             errorMessage = errorData.message;
           } else if (errorData.error) {
@@ -73,7 +73,7 @@ export class ChatApiService {
             errorMessage = errorData.detail;
           }
         } catch (parseError) {
-          // Si no se puede parsear el JSON, usar el mensaje por defecto
+          // If JSON cannot be parsed, use the default message
           console.warn('Could not parse error response:', parseError);
         }
         
@@ -87,35 +87,35 @@ export class ChatApiService {
         throw error;
       }
       
-      // Error de conexión o red
+      // Connection or network error
       if (error instanceof TypeError && error.message.includes('fetch')) {
-        throw new ApiError('No se pudo conectar con el servidor. Verifica que la API esté funcionando.', 0);
+        throw new ApiError('Could not connect to server. Please verify that the API is running.', 0);
       }
       
-      throw new ApiError('Error inesperado. Por favor, intenta de nuevo.', 0);
+      throw new ApiError('Unexpected error. Please try again.', 0);
     }
   }
 
   /**
-   * Obtiene el mensaje de error apropiado según el código de estado HTTP
-   * @param status - Código de estado HTTP
-   * @returns Mensaje de error descriptivo
+   * Gets the appropriate error message based on HTTP status code
+   * @param status - HTTP status code
+   * @returns Descriptive error message
    */
   private getErrorMessage(status: number): string {
     switch (status) {
       case 400:
-        return 'Solicitud inválida. Verifica que el mensaje no esté vacío.';
+        return 'Invalid request. Please verify that the message is not empty.';
       case 503:
-        return 'Servicio no disponible. Intenta de nuevo más tarde.';
+        return 'Service unavailable. Please try again later.';
       case 504:
-        return 'Tiempo de espera agotado. El servidor tardó demasiado en responder.';
+        return 'Request timeout. The server took too long to respond.';
       default:
-        return `Error del servidor (HTTP ${status}). Intenta de nuevo más tarde.`;
+        return `Server error (HTTP ${status}). Please try again later.`;
     }
   }
 }
 
-// --->  Instancia singleton del servicio 
+// ---> Singleton service instance
 export const chatApiService = new ChatApiService();
 
 export const sendChatMessage = (message: string): Promise<ChatResponse> => {

@@ -6,7 +6,7 @@ interface MessageBubbleProps {
   isTyping?: boolean;
 }
 
-// ----> Componente MessageBubble
+// ----> MessageBubble Component
 export default function MessageBubble({ message, role, isTyping = false }: MessageBubbleProps) {
   const isUser = role === 'user';
   
@@ -14,7 +14,16 @@ export default function MessageBubble({ message, role, isTyping = false }: Messa
     <div
       className={`${styles.bubble} ${isUser ? styles.userBubble : styles.botBubble}`}
     >
-      {isTyping ? 'Typing…' : message}
+      {isTyping ? (
+        <div className={styles.typingContainer}>
+          <span className={styles.typingText}>Typing</span>
+          <span className={styles.typingDot}></span>
+          <span className={styles.typingDot}></span>
+          <span className={styles.typingDot}></span>
+        </div>
+      ) : (
+        message
+      )}
     </div>
   );
 }

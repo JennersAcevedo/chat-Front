@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Tiny Chat - Jenners Acevedo",
-  description: "Aplicacion de chat con Nexjts",
+  description: "Chat application with Next.js",
 };
 
 export default function RootLayout({

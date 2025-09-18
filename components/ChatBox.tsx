@@ -15,7 +15,7 @@ interface MessageItem {
   text: string;
 }
 
-// ----> Componente ChatBox
+// ----> ChatBox Component
 export default function ChatBox() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<MessageItem[]>([]);
@@ -25,14 +25,14 @@ export default function ChatBox() {
   const listRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  // Auto-scroll al último mensaje
+  // Auto-scroll to last message
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollTop = listRef.current.scrollHeight;
     }
   }, [messages, loading]);
 
-  // Enfocar el input al montar y después de enviar
+  // Focus input on mount and after sending
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
@@ -43,6 +43,9 @@ export default function ChatBox() {
 
     setError(null);
     setLoading(true);
+    
+    // Clear input immediately when send is clicked
+    setInput('');
 
     const userMsg: MessageItem = { id: crypto.randomUUID(), role: 'user', text: value };
     setMessages((prev) => [...prev, userMsg]);
@@ -53,20 +56,23 @@ export default function ChatBox() {
       setMessages((prev) => [...prev, botMsg]);
     } catch (error) {
       if (error instanceof ApiError) {
-        console.log('API Error:', {
+
+        // NOT SHOWING THE ERROR MESSAGE IN THE CONSOLE FOR SECURITY
+        // IF YOU WANT TO SEE THE ERROR MESSAGE IN THE CONSOLE, UNCOMMENT THE FOLLOWING CODE: 
+
+      /*   console.log('API Error:', {
           message: error.message,
           status: error.status,
           name: error.name
-        });
+        }); */
         setError(error.message);
       } else {
         console.error('Unexpected error:', error);
-        setError('Error inesperado. Por favor, intenta de nuevo.');
+        setError('Unexpected error. Please try again.');
       }
     } finally {
       setLoading(false);
-      setInput('');
-      // Re-enfocar el input
+      // Re-focus the input
       inputRef.current?.focus();
     }
   };

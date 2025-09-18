@@ -4,7 +4,7 @@ interface FooterProps {
   className?: string;
 }
 
-// ----> Componente Footer
+// ----> Footer Component
 export default function Footer({ className }: FooterProps) {
   return (
     <footer className={`${styles.footer} ${className || ''}`}>
@@ -12,12 +12,12 @@ export default function Footer({ className }: FooterProps) {
         <div className={styles.footerSection}>
           <h3 className={styles.footerTitle}>Tiny Chat</h3>
           <p className={styles.footerDescription}>
-            Una aplicación de chat minimalista construida con Next.js y React.
+            A minimalist chat application built with Next.js and React.
           </p>
         </div>
         
         <div className={styles.footerSection}>
-          <h4 className={styles.footerSubtitle}>Tecnologías</h4>
+          <h4 className={styles.footerSubtitle}>Technologies</h4>
           <ul className={styles.footerList}>
             <li>Next.js 15</li>
             <li>React 19</li>

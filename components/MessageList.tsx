@@ -12,7 +12,7 @@ interface MessageListProps {
   messages: MessageItem[];
   isLoading: boolean;
 }
-// ----> Componente MessageList
+// ----> MessageList Component
 const MessageList = forwardRef<HTMLDivElement, MessageListProps>(
   ({ messages, isLoading }, ref) => {
     return (

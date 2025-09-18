@@ -23,3 +23,54 @@
   border-top-left-radius: 6px;
 }
 
+/* Typing animation container */
+.typingContainer {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+}
+
+/* Typing text */
+.typingText {
+  font-size: 14px;
+  color: currentColor;
+  margin-right: 8px;
+}
+
+/* Individual typing dots */
+.typingDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.4;
+  animation: typingWave 1.4s infinite ease-in-out;
+}
+
+/* Animation delays for wave effect */
+.typingDot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typingDot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.typingDot:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+/* Wave animation keyframes */
+@keyframes typingWave {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-12px);
+    opacity: 1;
+  }
+}
+
+
